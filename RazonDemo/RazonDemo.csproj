@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Pages\students\" />
+    <None Remove="Pages\test\" />
+    <None Remove="Pages\Employees\" />
+    <None Remove="System.ComponentModel.Annotations" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\students\" />
+    <Folder Include="Pages\test\" />
+    <Folder Include="Pages\Employees\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RazorDemo.Models\RazorDemo.Models.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\RazorDemo.Services\RazorDemo.Services.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+  </ItemGroup>
+</Project>

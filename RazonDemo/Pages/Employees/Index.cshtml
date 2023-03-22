@@ -1,0 +1,39 @@
+﻿@page
+@*
+    Convention vs Configuration
+    @page "/employeelist" //custom route
+    @page "employeelist"
+    @page "{name}" // route parameter
+    @page "{name:alpha}" // type of route parameter (alpha means aplhabet)
+    @page "{id?}" // id parameter  is optional
+    @page "/employees/view/{id:int}" // constraint
+    @page "/employees/view/{id:min(1):max(100)}" // https://csharp-video-tutorials.blogspot.com/2019/12/route-constraints-in-aspnet-core.html
+*@
+@model RazonDemo.Pages.Employees.IndexModel
+@{
+}
+
+<h1>Employees</h1>
+
+<h3>@Model.Employees.Count()</h3>
+
+<div class="card-deck">
+    @foreach (var employee in Model.Employees)
+    {
+        var photoPath = "~/images/" + (employee.PhotoPath ?? "noimage.jpg");
+
+        <div class="card m-3">
+            <div class="header">
+                <h3>@employee.Name</h3>
+            </div>
+
+            <img class="card-img-top img-thumbnail" src="@photoPath" asp-append-version="true" />
+            <div class="card-footer text-center">
+                <a asp-page="/Employees/Details" asp-route-ID="@employee.ID" class="btn btn-primary m-1">View</a>
+                <a href="#" asp-page="/Employees/Edit" asp-route-ID="@employee.ID" class="btn btn-primary m-1">Edit</a>
+                <a asp-page="/Employees/Delete" asp-route-ID="@employee.ID"
+                   class="btn btn-danger m-1">Delete</a>
+            </div>
+        </div>
+    }
+</div>
